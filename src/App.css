@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(266deg, #3c469db5, rgb(25 118 210 / 31%));
+  font-family: Poppins, Arial, sans-serif !important;
+  margin: 0;
+  min-height: 100vh;
+  padding: 2rem;
+}
+.card-weather{
+  max-width: 1100px;
+  height: 400px;
+  border-radius: 2rem;
+  box-shadow: #ffffff 1px 1px 1px 1px, #ffffff 1px 1px 1px 1px;
+  background: transparent;
+}
