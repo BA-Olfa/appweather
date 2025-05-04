@@ -11,10 +11,10 @@ import { WeatherWeek } from './components/WeatherWeek';
 
 function App() {
   const [weatherweek, setWeatherweek] = useState([]);
-  const [lati, setLati] = useState(0);
-  const [long, setLong] = useState(0);
   
-
+  const [lati, setLati] = useState(36,800833333);
+  const [long, setLong] = useState(10,18);
+  
   const filterForecastWeather = (data) => {
     const dataWeatherweek = data
         .map((f) => ({
@@ -24,7 +24,8 @@ function App() {
             date: f.dt_txt,
             description:f.weather[0].description,
             clouds:f.clouds.all,
-            humidity:f.main.humidity
+            humidity:f.main.humidity,
+            wind:f.wind.speed
         })).slice(0, 6);
         setWeatherweek(dataWeatherweek)
 };

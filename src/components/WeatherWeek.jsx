@@ -4,6 +4,7 @@ import { getWeekDays } from '../utilities/DatetimeUtils';
 import { FaThermometerEmpty } from 'react-icons/fa';
 import { BiSolidDropletHalf } from 'react-icons/bi';
 import { FiWind } from 'react-icons/fi';
+import { WiCloudy } from 'react-icons/wi'; // cloudy icon
 import { GiSunrise, GiSunset } from 'react-icons/gi';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 
@@ -20,15 +21,16 @@ export const WeatherWeek = ({ data }) => {
           <div className="d-flex bd-highlight">
             <div className="p-2 flex-fill bd-highlight day">{forecastDays[idx]}</div>
             <div className="p-2 flex-fill bd-highlight day"></div>
-            <div className="p-2 flex-fill bd-highlight day"> <FaThermometerEmpty size={18} />{Math.round(item.temp) + ' °C'}</div>
-            <div className="p-2 flex-fill bd-highlight day"> <FiWind size={18} />{Math.round(item.temp) + ' km/h'}</div>
+            <div className="p-2 flex-fill bd-highlight day"> <FaThermometerEmpty size={20} />{Math.round(item.temp) + ' °C'}</div>
+            <div className="p-2 flex-fill bd-highlight day"> <FiWind size={20} />{Math.round(item.wind) + ' km/h'}</div>
             </div> 
 
-            <div className="d-flex bd-highlight">
-            <div className="p-2 flex-fill bd-highlight day"><img src={iconUrlFromCode(`${item.icon}`)} className='icon-weather'/></div>
-            <div className="p-2 flex-fill bd-highlight day">{item.description}</div>
-            <div className="p-2 flex-fill bd-highlight day"><BiSolidDropletHalf size={18} />{item.humidity + ' %'}</div>
-            <div className="p-2 flex-fill bd-highlight day"><BiSolidDropletHalf size={18} />{item.clouds + ' %'}</div>
+            <div className="d-flex bd-highlight bloc2">
+            <div className="p-2 flex-fill bd-highlight day"><img src={iconUrlFromCode(`${item.icon}`)} className='icon-weather'/>{item.description}</div>
+            
+            <div className="p-2 flex-fill bd-highlight day"><WiCloudy size={25} />{item.clouds + ' %'}</div>
+            <div className="p-2 flex-fill bd-highlight day"><BiSolidDropletHalf size={20} />{item.humidity + ' %'}</div>
+            
             </div> 
 
         </Card>
