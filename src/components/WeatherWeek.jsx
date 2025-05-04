@@ -5,8 +5,7 @@ import { FaThermometerEmpty } from 'react-icons/fa';
 import { BiSolidDropletHalf } from 'react-icons/bi';
 import { FiWind } from 'react-icons/fi';
 import { WiCloudy } from 'react-icons/wi'; // cloudy icon
-import { GiSunrise, GiSunset } from 'react-icons/gi';
-import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
+
 
 export const WeatherWeek = ({ data }) => {
     const iconUrlFromCode = (icon) => `http://openweathermap.org/img/wn/${icon}@2x.png`;
@@ -26,9 +25,8 @@ export const WeatherWeek = ({ data }) => {
             </div> 
 
             <div className="d-flex bd-highlight bloc2">
-            <div className="p-2 flex-fill bd-highlight day"><img src={iconUrlFromCode(`${item.icon}`)} className='icon-weather'/>{item.description}</div>
-            
-            <div className="p-2 flex-fill bd-highlight day"><WiCloudy size={25} />{item.clouds + ' %'}</div>
+            <div className="p-2 flex-fill bd-highlight day-description"><img src={iconUrlFromCode(`${item.icon}`)} className='icon-weather'/>{item.description}</div>           
+            <div className="p-2 flex-fill bd-highlight day"><WiCloudy size={30} />{item.clouds + ' %'}</div>
             <div className="p-2 flex-fill bd-highlight day"><BiSolidDropletHalf size={20} />{item.humidity + ' %'}</div>
             
             </div> 

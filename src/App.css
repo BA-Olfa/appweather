@@ -78,6 +78,17 @@ body {
     -webkit-box-align: center;
     align-items: center;
 }
+.day-description{
+  margin: 0px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.00938em;
+  color: white;
+  font-family: Poppins;
+  line-height: 1;
+  -webkit-box-align: center;
+  align-items: center;
+}
 .bloc2{
   align-items: center;
 }

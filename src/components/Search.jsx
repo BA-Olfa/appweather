@@ -2,9 +2,8 @@ import React, { useState }  from 'react';
 import { AsyncPaginate } from 'react-select-async-paginate';
 import { searchCities } from '../api/apiWeather'
 
-export const Search = ({ onSearchChange }) => {
-    const [searchValue, setSearchValue] = useState(null);
-
+export const Search = ({ onSearchChange,datainput }) => {
+  const [searchValue, setSearchValue] = useState(datainput);
   const loadOptions = async (inputValue) => {
     const citiesList = await searchCities(inputValue);
 

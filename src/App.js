@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useEffect} from 'react';
 import { Card, Row, Container, Col} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
@@ -11,10 +12,11 @@ import { WeatherWeek } from './components/WeatherWeek';
 
 function App() {
   const [weatherweek, setWeatherweek] = useState([]);
-  
-  const [lati, setLati] = useState(36,800833333);
-  const [long, setLong] = useState(10,18);
-  
+  const objetCity ={
+    value: '36.800833333 10.18',
+    label: 'Tunis, TN',
+  }
+
   const filterForecastWeather = (data) => {
     const dataWeatherweek = data
         .map((f) => ({
@@ -31,9 +33,17 @@ function App() {
 };
 
   const searchChangeHandler = async (enteredData) => {
+    console.log('enteredData latitude  : '+enteredData.value)
+    console.log('enteredData label     : '+enteredData.label)
+    
     const [latitude, longitude] = enteredData.value.split(' ');
+    const [name, code] = enteredData.label.split(' ');
+
    console.log(latitude)
    console.log(longitude)
+   console.log(name)
+   console.log(code)
+
     try {
       const [todayWeatherResponse, weekForecastResponse] =await getWeatherData(latitude, longitude);
       console.log(weekForecastResponse.list)
@@ -43,13 +53,16 @@ function App() {
       console.log(error)
     }
   };
+  useEffect(() => {
+    searchChangeHandler(objetCity);
+  }, []);
 
   return (
     <div className="container mt-5">
     <Card className="mx-auto text-center card-weather">
     <Container className='container-search-weather'>
       <Row>
-        <Col><Search onSearchChange={searchChangeHandler} /></Col>
+        <Col><Search onSearchChange={searchChangeHandler} datainput={objetCity}/></Col>
       </Row>
     </Container>
     <Container className='container-search-weather'>
