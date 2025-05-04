@@ -12,6 +12,7 @@ export const WeatherWeek = ({ data }) => {
     const forecastDays = getWeekDays(); 
 
   return (
+    <>
     <Row xs={1} md={2} className="g-4">
     {data.map((item, idx) => (
       <Col key={idx}>
@@ -25,7 +26,7 @@ export const WeatherWeek = ({ data }) => {
             </div> 
 
             <div className="d-flex bd-highlight bloc2">
-            <div className="p-2 flex-fill bd-highlight day-description"><img src={iconUrlFromCode(`${item.icon}`)} className='icon-weather'/>{item.description}</div>           
+            <div className="p-2 flex-fill bd-highlight day-description"><img src={iconUrlFromCode(`${item.icon}`)} className='icon-weather' alt={item.description}/>{item.description}</div>           
             <div className="p-2 flex-fill bd-highlight day"><WiCloudy size={30} />{item.clouds + ' %'}</div>
             <div className="p-2 flex-fill bd-highlight day"><BiSolidDropletHalf size={20} />{item.humidity + ' %'}</div>
             
@@ -35,5 +36,6 @@ export const WeatherWeek = ({ data }) => {
       </Col>
     ))}
   </Row>
+  </>
   )
 }
