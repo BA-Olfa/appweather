@@ -119,7 +119,7 @@ function App() {
     </Container>  
     <Container className='container-search-weather'>
       <Row xs={1} md={1} className="g-4"><Col><h4 className='titre'>TODAY'S FORECAST</h4></Col></Row>
-      <Row>
+      <Row className="justify-content-md-center bloc2">
           <TodayForecast data={weatherhourly}></TodayForecast>
       </Row>
     </Container> 
