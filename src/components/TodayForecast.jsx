@@ -8,7 +8,7 @@ export const TodayForecast = ({data}) => {
   return (
     <>
      {data.map((item, idx) => (
-          <Col key={idx} xs lg="2">
+          <Col key={idx} xs="12" lg="2" sm="4" className='div-heure'>
           <div className='div-detail-heure'>
             <div className='lib-titre-Air-condition'>{item.heure}</div>
             <div className='lib-titre-Air-condition'>{item.description}</div>
