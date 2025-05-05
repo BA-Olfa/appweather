@@ -23,6 +23,17 @@ function App() {
 
   const filterForecastWeather = (data,data2) => {
     
+    const Firstelement={
+      temp: data[0].main.temp,
+      title: data[0].dt,
+      icon: data[0].weather[0].icon,
+      date: data[0].dt_txt,
+      description:data[0].weather[0].description,
+      clouds:data[0].clouds.all,
+      humidity:data[0].main.humidity,
+      wind:data[0].wind.speed
+    }
+
     const dataWeatherweek = data
     .filter((f) => f.dt_txt.slice(-8) === "00:00:00")
         .map((f) => ({
@@ -35,7 +46,8 @@ function App() {
           humidity:f.main.humidity,
           wind:f.wind.speed
         }));
-        setWeatherweek(dataWeatherweek)
+      dataWeatherweek.push(Firstelement)
+      setWeatherweek(dataWeatherweek)
 
       const datahourlyWeather = data
         .map((f) => ({
@@ -46,7 +58,8 @@ function App() {
             description:f.weather[0].description,
             clouds:f.clouds.all,
             humidity:f.main.humidity,
-            wind:f.wind.speed
+            wind:f.wind.speed,
+            heure:f.dt_txt.split(" ")[1].slice(0, 5)
         })).slice(0, 6);
         setWeatherhourly(datahourlyWeather)
 
