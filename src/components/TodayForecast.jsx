@@ -9,10 +9,12 @@ export const TodayForecast = ({data}) => {
     <>
      {data.map((item, idx) => (
           <Col key={idx} xs lg="2">
+          <div className='div-detail-heure'>
             <div className='lib-titre-Air-condition'>{item.heure}</div>
             <div className='lib-titre-Air-condition'>{item.description}</div>
             <div className='lib-titre-Air-condition'><FaThermometerEmpty size={25} className='icon-weather'/>{Math.round(item.temp) + ' °C'}</div>
            <img src={iconUrlFromCode(`${item.icon}`)} className='icon-weather' alt={item.description}/>
+          </div>
           </Col>
       ))}
     </>
