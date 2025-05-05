@@ -12,16 +12,32 @@ import { TodayForecast } from './components/TodayForecast';
 
 function App() {
   const [weatherweek, setWeatherweek] = useState([]);
+  const [weatherhourly, setWeatherhourly] = useState([]);
   const [dataCurrentWeather, setDataCurrentWeather] = useState({});
-  const [nameCity,setNameCity]=useState('');
+  
 
   const objetCity ={
-    value: '36.800833333 10.18',
+    value: '34 9',
     label: 'Tunis, TN',
   }
 
   const filterForecastWeather = (data,data2) => {
+    
     const dataWeatherweek = data
+    .filter((f) => f.dt_txt.slice(-8) === "00:00:00")
+        .map((f) => ({
+          temp: f.main.temp,
+          title: f.dt,
+          icon: f.weather[0].icon,
+          date: f.dt_txt,
+          description:f.weather[0].description,
+          clouds:f.clouds.all,
+          humidity:f.main.humidity,
+          wind:f.wind.speed
+        }));
+        setWeatherweek(dataWeatherweek)
+
+      const datahourlyWeather = data
         .map((f) => ({
             temp: f.main.temp,
             title: f.dt,
@@ -32,7 +48,7 @@ function App() {
             humidity:f.main.humidity,
             wind:f.wind.speed
         })).slice(0, 6);
-        setWeatherweek(dataWeatherweek)
+        setWeatherhourly(datahourlyWeather)
 
         const datatodayWeather = {
           temp: data2.main.temp,
@@ -46,14 +62,16 @@ function App() {
           city:data2.name
       }
       setDataCurrentWeather(datatodayWeather)
+
 };
 
   const searchChangeHandler = async (enteredData) => {
     const [latitude, longitude] = enteredData.value.split(' ');
-    setNameCity(enteredData.label);
+   
 
     try {
       const [todayWeatherResponse, weekForecastResponse] =await getWeatherData(latitude, longitude);
+      console.log(weekForecastResponse)
       console.log(todayWeatherResponse)
       filterForecastWeather(weekForecastResponse.list,todayWeatherResponse)
       
@@ -89,7 +107,7 @@ function App() {
     <Container className='container-search-weather'>
       <Row xs={1} md={1} className="g-4"><Col><h4 className='titre'>TODAY'S FORECAST</h4></Col></Row>
       <Row>
-          <TodayForecast></TodayForecast>
+          <TodayForecast data={weatherhourly}></TodayForecast>
       </Row>
     </Container> 
     <Container className='container-search-weather'>

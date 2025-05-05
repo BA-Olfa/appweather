@@ -60,8 +60,8 @@ body {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.icon-weather-today{
-  width: 100px;
+.icon-weather{
+  width: 55px;
 }
 
 .card-detail-weather{
@@ -118,6 +118,7 @@ body {
 }
 .icon-weather-today{
   color: white; 
+  width: 100px;
 }
 .lib-titre-Air-condition{
   font-size: 20px;
